@@ -13,7 +13,7 @@ pipeline {
     }
       stage('Push image') {
         steps {
-          withAWS(region:'us-west-2',credentials:'jenkins') {
+          withAWS(region:'us-west-2',credentials:'wasread') {
             sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 741383253344.dkr.ecr.us-west-2.amazonaws.com'  
             sh 'docker build -t priyanka/my-app .'
             sh 'docker tag priyanka/my-app:latest 741383253344.dkr.ecr.us-west-2.amazonaws.com/priyanka/my-app:latest'
@@ -23,14 +23,14 @@ pipeline {
       }
       stage('Create kubeconfig') {
         steps {
-          withAWS(region:'us-west-2',credentials:'jenkins') {
+          withAWS(region:'us-west-2',credentials:'wasread') {
             sh 'aws eks --region us-west-2 update-kubeconfig --name priyanka-cluster'  
            }
         }
       }
       stage('Deploy containers') {
         steps {
-          withAWS(region:'us-west-2',credentials:'jenkins') {
+          withAWS(region:'us-west-2',credentials:'wasread') {
             sh 'kubectl apply -f deployment.yaml'  
             sh 'kubectl apply -f services.yaml'
            }
