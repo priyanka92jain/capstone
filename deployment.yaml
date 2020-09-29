@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: 741383253344.dkr.ecr.us-west-2.amazonaws.com/priyanka92jain/my-app:latest
+          image: 004429287899.dkr.ecr.us-east-2.amazonaws.com/capstone
           ports:
             - containerPort: 80
