@@ -1,9 +1,4 @@
 pipeline {
-    environment {
-	  registry = "jainprg/docker-test"
-	  registryCredential = ‘dockerhub’
-	  dockerImage = ''
-    }
     agent any
     stages {
       stage('Lint HTML') {
@@ -14,26 +9,15 @@ pipeline {
       stage('Build Docker image') {
         steps {
           sh 'docker build -t my-app .'
-		  dockerImage = docker.build registry + ":$BUILD_NUMBER"
       }
     }
-	
-    
-
-	  stage('Test image') {
-        /* Ideally, we would run a test framework against our image.
-         * For this example, we're using a Volkswagen-type approach ;-) */
-
-        app.inside {
-            sh 'echo "Tests passed"'
-        }
-      }
-
- 
       stage('Push image') {
         steps {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
+          withAWS(region:'us-west-2',credentials:'wasread') {
+            sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 741383253344.dkr.ecr.us-west-2.amazonaws.com'  
+            sh 'docker build -t priyanka/my-app .'
+            sh 'docker tag priyanka/my-app:latest 741383253344.dkr.ecr.us-west-2.amazonaws.com/priyanka/my-app:latest'
+            sh 'docker push 741383253344.dkr.ecr.us-west-2.amazonaws.com/priyanka/my-app:latest'
            }
         }
       }
