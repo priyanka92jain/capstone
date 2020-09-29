@@ -1,7 +1,7 @@
 # capstone
 Capstone project
 
-Git HUb repo : https://github.com/peyushjain1/capstone
+Git HUb repo : https://github.com/priyanka92jain/capstone
 
 1) Github repo contain following 
  - Capstone.txt  - Contain all steps to create kubernetes cluster. 
