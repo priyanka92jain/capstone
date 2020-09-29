@@ -29,4 +29,6 @@ Git HUb repo : https://github.com/priyanka92jain/capstone
 8. Lint Error
 9. S3-bucket-static-priyankajain-jenkins
 10. UploadAWS-staticContent
+11. docker image run
+12. ClusterNodesServerDetails
 
