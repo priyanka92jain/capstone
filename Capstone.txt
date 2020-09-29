@@ -43,7 +43,6 @@ kubectl version --short --client
 
 
 10) Create a cluster 
-eksctl create cluster --name priyanka-cluster --version 1.17 --region us-west-2 --nodegroup-name priyanka-nodes --node-type t3.small --ssh-access --ssh-public-key priyankacluster --managed
 
 eksctl create cluster --name priyanka-cluster --version 1.17 --region us-west-2 --nodegroup-name priyanka-nodes --node-type t3.small --nodes-min 1 --nodes-max 1 --ssh-access --ssh-public-key priyankacluster --managed
 
@@ -59,5 +58,5 @@ eksctl delete cluster -n priyanka-cluster -w
 14) To deal with jenkins access issues with docker use below commands
 sudo groupadd docker
 sudo usermod -aG docker jenkins
-reboot 
+
 
