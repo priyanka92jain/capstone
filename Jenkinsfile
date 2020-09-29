@@ -14,10 +14,10 @@ pipeline {
       stage('Push image') {
         steps {
           withAWS(region:'us-west-2',credentials:'aws-static') {
-            sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 741383253344.dkr.ecr.us-west-2.amazonaws.com'  
-            sh 'docker build -t priyanka/my-app .'
-            sh 'docker tag priyanka/my-app:latest 741383253344.dkr.ecr.us-west-2.amazonaws.com/priyanka/my-app:latest'
-            sh 'docker push 741383253344.dkr.ecr.us-west-2.amazonaws.com/priyanka/my-app:latest'
+            sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 004429287899.dkr.ecr.us-east-2.amazonaws.com'  
+            sh 'docker build -t jainprg/my-app .'
+            sh 'docker tag jainprg/my-app:latest 004429287899.dkr.ecr.us-east-2.amazonaws.com/capstone'
+            sh 'docker push 004429287899.dkr.ecr.us-east-2.amazonaws.com/capstone'
            }
         }
       }
