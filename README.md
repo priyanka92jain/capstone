@@ -16,6 +16,8 @@ Git HUb repo : https://github.com/priyanka92jain/capstone
  - Screenshot : Lint error in Jenkins
  - Screenshot : Successful Jenkins pipeline
  - Screenshot : Successful deployment from Jenkins
+ - Screenshot : Green and blue deployment
+ 
 2) I have used eksctl to create kubernetes cluster. ALl the steps related to that are present in text file named 'Capstone.txt'.
 3) eksctl automatically created all networking related to a kubernetes cluster and worker nodes via cloud formation. Yaml used by same is copied and is added to git hub repo. 
 4) All steps to setup Jenkins are present in 'Jenkins.txt'
